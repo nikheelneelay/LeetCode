@@ -20,15 +20,16 @@ namespace SinglySimple
         }
         public class PersonNodeList
         {
-            private PersonNode _first;
+            private PersonNode head;
 
-            public PersonNodeList(PersonNode pers)
-            {
-                _first = pers;
-            }
             public void Add(PersonNode pers)
             {
-                PersonNode temp = _first;
+                if(head == null)
+                {
+                    head = pers;
+                }
+
+                PersonNode temp = head;
                 // find the last node
                 while (temp.Next != null)
                 {
@@ -40,7 +41,7 @@ namespace SinglySimple
             }
             public void DisplayAll()
             {
-                PersonNode temp = _first;
+                PersonNode temp = head;
                 do
                 {
                     Console.WriteLine(string.Format("{0} {1}", temp.FirstName, temp.LastName));
@@ -49,7 +50,7 @@ namespace SinglySimple
             }
             public bool InsertAfter(PersonNode pExisting, PersonNode pNew)
             {
-                PersonNode temp = _first;
+                PersonNode temp = head;
                 do
                 {
                     if (temp.FirstName == pExisting.FirstName && temp.LastName == pExisting.LastName)
@@ -64,7 +65,7 @@ namespace SinglySimple
             }
             public bool Remove(PersonNode pers)
             {
-                PersonNode temp = _first;
+                PersonNode temp = head;
                 // is it the first node?
                 if (temp.FirstName == pers.FirstName && temp.LastName == pers.LastName)
                 {
@@ -76,7 +77,7 @@ namespace SinglySimple
                     }
                     else
                     {
-                        _first = _first.Next;
+                        head = head.Next;
                         return true;
                     }
                 }
@@ -94,9 +95,9 @@ namespace SinglySimple
             }
         }
 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
-            PersonNodeList personList = new PersonNodeList(new PersonNode("Bob", "Biscuit"));
+            PersonNodeList personList = new PersonNodeList();
             personList.Add(new PersonNode("Peter", "Griffin"));
             personList.Add(new PersonNode("Ted", "Jones"));
             personList.Add(new PersonNode("Mary", "Bourbon"));
