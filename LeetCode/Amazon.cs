@@ -21,6 +21,7 @@ namespace LeetCode
         public static List<int> Test(List<int> input, int sum)
         {
             var maxPair = new int[2];
+            // O(n^2)
             for (int i = 0; i < input.Count; i++)
             {
                 for (int j = i + 1; j < input.Count; j++)
